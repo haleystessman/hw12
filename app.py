@@ -14,7 +14,7 @@ _dbhostname = client.get_secret('HW12-DBHOSTNAME')
 _dbusername = client.get_secret('HW12-DBUSERNAME')
 _dbpassword = client.get_secret('HW12-DBPASSWORD')
 _dbname = client.get_secret('HW12-DBNAME')
-_secret = client.get_secret('SECRET_KEY')
+_secret = client.get_secret('HW12-SECRET-KEY')
 
 conn = pymysql.connect(
         host = _dbhostname.value, 
@@ -25,7 +25,7 @@ conn = pymysql.connect(
         cursorclass = pymysql.cursors.DictCursor)  
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = _secret.value
+app.config['HW12-SECRET-KEY'] = _secret.value
 
 @app.route('/', methods=['GET'])
 def index():
